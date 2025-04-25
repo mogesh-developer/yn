@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diploma in Catering & Hotel Management | Maharishi Institute</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+
+<body>
+    <div class="course-container">
+        <header>
+            <h1>Diploma in Catering and Hotel Management</h1>
+            <p>Your Gateway to a Successful Career in the Hospitality Industry</p>
+        </header>
+
+        <main>
+            <section class="course-details">
+                <h2>Course Overview</h2>
+                <p>This diploma provides you with all the essential skills to excel in the catering and hospitality industry. With a mix of theoretical learning and practical training, you'll be prepared to work in hotels, restaurants, resorts, and more.</p>
+
+                <h3>Course Duration</h3>
+                <p>12 Months (Including Internship)</p>
+
+                <h3>Course Modules</h3>
+                <ul>
+                    <li>Introduction to Hospitality & Tourism</li>
+                    <li>Food Production and Culinary Skills</li>
+                    <li>Food & Beverage Service Management</li>
+                    <li>Housekeeping Management</li>
+                    <li>Front Office Management</li>
+                    <li>Event Planning & Catering</li>
+                    <li>Internship in Leading Hotels & Restaurants</li>
+                </ul>
+
+                <h3>Eligibility</h3>
+                <p>Minimum Qualification: High School (10+2) or equivalent</p>
+
+                <h3>Job Opportunities</h3>
+                <p>Graduates can work as:</p>
+                <ul>
+                    <li>Hotel Manager</li>
+                    <li>Catering Manager</li>
+                    <li>Restaurant Supervisor</li>
+                    <li>Chef / Sous Chef</li>
+                    <li>Event Coordinator</li>
+                    <li>Front Desk Executive</li>
+                </ul>
+            </section>
+
+            <section class="cta-buttons">
+                <a href="{{ url_for('register_student') }}" class="btn primary">Apply Now</a>
+                <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; {{ 2025 }} Maharishi Institute. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

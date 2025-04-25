@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .apply-btn {
+            padding: 6px 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="scontainer">
+        <h2>Welcome, {{ username }} 👋</h2>
+        <p>Here are your available courses:</p>
+
+       <table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Instructor</th>
+            <th>Duration</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.title }}</td>
+            <td>{{ course.description }}</td>
+            <td>{{ course.instructor }}</td>
+            <td>{{ course.duration }}</td>
+            <td>
+                {% if course.id in enrolled_course_ids %}
+                   <span class="enrolled-badge">Enrolled</span>
+
+                {% else %}
+                    <form method="post" action="{{ url_for('apply_course', course_id=course.id) }}">
+                        <button type="submit" class="apply-btn">Apply</button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        <p style="margin-top: 30px;"><a href="{{ url_for('logout') }}">Logout</a></p>
+    </div>
+</body>
+</html>
+

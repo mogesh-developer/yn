@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <form method="POST">
+        <h2>Register as Admin</h2>
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Register</button>
+        <p>{{ msg }}</p>
+        <p>Already an admin? <a href="{{ url_for('admin_login') }}">Login here</a></p>
+    </form>
+  </div>
+</body>
+</html>

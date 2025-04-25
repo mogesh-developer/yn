@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+        /* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.scontainer {
+    background: #ffffff;
+    padding: 30px 40px;
+    margin-top: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+table thead {
+    background-color: #3498db;
+    color: white;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #e6f7ff;
+}
+
+/* Logout link */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive table for small screens */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+        padding: 10px;
+    }
+
+    table td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 12px;
+        font-weight: bold;
+        text-align: left;
+        color: #333;
+    }
+}
+
+</style>>
+<body>
+    <div class="scontainer">
+        <h2>Admin Dashboard</h2>
+
+
+        <h3>Enrollments Overview</h3>
+        {% if enrollments %}
+        <table >
+            <thead>
+                <tr>
+                    <th>Student Username</th>
+                    <th>Course Title</th>
+                    <th>Instructor</th>
+                    <th>Enrollment Date</th>
+                </tr>
+            </thead>
+           <tbody>
+    {% for row in enrollments %}
+    <tr>
+        <td data-label="Student Username">{{ row.student_username }}</td>
+        <td data-label="Course Title">{{ row.course_title }}</td>
+        <td data-label="Instructor">{{ row.instructor }}</td>
+        <td data-label="Enrollment Date">{{ row.enrollment_date.strftime('%Y-%m-%d %H:%M') }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+        </table>
+        {% else %}
+        <p>No enrollments found.</p>
+        {% endif %}
+         <a href="{{ url_for('admin_logout') }}">Logout</a>
+    </div>
+</body>
+</html>
